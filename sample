@@ -1,0 +1,217 @@
+<?php
+
+ini_set('memory_limit', '512M');
+ini_set('max_execution_time', 36000);
+
+
+$time_start = microtime(true);
+
+$file = fopen("mlm_id.txt", "w");
+
+generate7UniqueId($file);
+
+//generatePlate1($file);
+//generatePlate2($file);
+//generatePlate3($file);
+//generatePlate4($file);
+//generatePlate5($file);
+
+fclose($file);
+
+
+$time_end = microtime(true);
+echo ($time_end - $time_start)/60;
+
+
+function generatePlate1($file) { //2 Letters 4 Numbers
+	
+	$letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+	$numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+		
+	foreach ($letters as $first) {
+		foreach ($letters as $second) {
+			foreach ($numbers as $one) {
+				foreach ($numbers as $two) {
+					foreach ($numbers as $three) {
+						foreach ($numbers as $four) {
+							
+							fwrite($file, $first.$second.$one.$two.$three.$four . "\n");
+
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+
+function generatePlate2($file) { //3 Letters 3 Numbers (no vowel)
+	
+	//$letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+	$letters = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'];
+	$numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+		
+	foreach ($letters as $first) {
+		foreach ($letters as $second) {
+			foreach ($letters as $third) {
+				foreach ($numbers as $one) {
+					foreach ($numbers as $two) {
+						foreach ($numbers as $three) {
+							
+							fwrite($file, $first.$second.$third.$one.$two.$three . "\n");
+
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+
+function generatePlate3($file) { //3 VOWELS 3 Numbers (vowels only)
+	
+	$letters = ['A', 'E', 'I', 'O', 'U'];
+	$numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+		
+	foreach ($letters as $first) {
+		foreach ($letters as $second) {
+			foreach ($letters as $third) {
+				foreach ($numbers as $one) {
+					foreach ($numbers as $two) {
+						foreach ($numbers as $three) {
+							
+							fwrite($file, $first.$second.$third.$one.$two.$three . "\n");
+
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+
+function generatePlate4($file) { //4 Letters 2 Numbers (no vowel)
+	
+	$letters = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'];
+	$numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+		
+	foreach ($letters as $first) {
+		foreach ($letters as $second) {
+			foreach ($letters as $third) {
+				foreach ($letters as $fourth) {
+					foreach ($numbers as $one) {
+						foreach ($numbers as $two) {
+							fwrite($file, $first.$second.$third.$fourth.$one.$two . "\n");
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+
+function generatePlate5($file) { //4 VOWELS 2 Numbers (vowels only)
+	
+	$letters = ['A', 'E', 'I', 'O', 'U'];
+	$numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+		
+	foreach ($letters as $first) {
+		foreach ($letters as $second) {
+			foreach ($letters as $third) {
+				foreach ($letters as $fourth) {
+					foreach ($numbers as $one) {
+						foreach ($numbers as $two) {
+							fwrite($file, $first.$second.$third.$fourth.$one.$two . "\n");
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+
+
+
+
+
+function generate6UniqueId($file) { //9 Numbers
+	
+	$n = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+		
+	foreach ($n as $n1) {
+		foreach ($n as $n2) {
+			foreach ($n as $n3) {
+				foreach ($n as $n4) {
+					foreach ($n as $n5) {
+						foreach ($n as $n6) {
+							fwrite($file, $n1.$n2.$n3.$n4.$n5.$n6 . "\n");
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+function generate7UniqueId($file) { //9 Numbers
+	
+	$n = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+	
+	fwrite($file, "customer_id, status\n");	
+	
+	foreach ($n as $n1) {
+		foreach ($n as $n2) {
+			foreach ($n as $n3) {
+				foreach ($n as $n4) {
+					foreach ($n as $n5) {
+						foreach ($n as $n6) {
+							foreach ($n as $n7) {
+								fwrite($file, $n1.$n2.$n3.$n4.$n5.$n6.$n7.", 0\n");
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+function generate9UniqueId($file) { //9 Numbers
+	
+	$n = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+		
+	foreach ($n as $n1) {
+		foreach ($n as $n2) {
+			foreach ($n as $n3) {
+				foreach ($n as $n4) {
+					foreach ($n as $n5) {
+						foreach ($n as $n6) {
+							foreach ($n as $n7) {
+								foreach ($n as $n8) {
+									foreach ($n as $n9) {
+										fwrite($file, $n1.$n2.$n3.$n4.$n5.$n6.$n7.$n8.$n9 . "\n");
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
